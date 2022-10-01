@@ -8,6 +8,7 @@ initPage();
 
 const onFormInput = event => {
   formData[event.target.name] = event.target.value;
+  const { name, value } = event.target;
   try {
     let saveData = localStorage.getItem('feedback-form-state');
     if (saveData) {
@@ -16,7 +17,7 @@ const onFormInput = event => {
       saveData = {};
     }
     saveData[name] = value;
-    const stringifyData = JSON.stringify(formData);
+    const stringifyData = JSON.stringify(saveData);
     localStorage.setItem('feedback-form-state', stringifyData);
   } catch (error) {
     console.log(error);
